@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lista | Batalha Pokémon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="bg-batalha">
+<div id="header"></div>
+
+<main class="container">
+  <h1>Lista de Pokémons</h1>
+  <div class="filtros-lista">
+    <input id="buscaLista" class="input" placeholder="Buscar por nome..." />
+    <div id="tiposLista" class="tipos-wrap"></div>
+  </div>
+  <ul id="ulListaPokemons" class="ul-lista"></ul>
+</main>
+
+<div id="footer"></div>
+
+<script src="script.js"></script>
+<script>
+  // Carregar header e footer em todas as páginas
+  async function includeFragment(id, file) {
+    const resp = await fetch(file);
+    document.getElementById(id).innerHTML = await resp.text();
+  }
+  includeFragment("header", "header.html");
+  includeFragment("footer", "footer.html");
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Batalha Pokémon</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="bg-index">
+<div id="header"></div>
+
+<!-- Faixa de cores logo abaixo do header -->
+<div class="faixa"></div>
+
+<main class="container landing" style="background-image: url('./imagens/grid_batalha.png'); background-size: cover; background-position: center;"> 
+   <p class="lead" style="text-align: center;">Escolha seu Pokémon e lute contra um rival aleatório no mesmo nível que você!</p>
+   <br>
+<!--
+  <input type="text" id="pokemonInput" class="input" placeholder="Ex: pikachu">
+  <button class="btn primario" onclick="batalhar()">Batalhar!</button>
+-->
+  <div id="resultado"></div>
+
+  <!-- Botão Jogar (Pokébola) -->
+  <div class="btn-jogar-wrap" >
+    <a href="jogo.html" class="btn-jogar" title="Ir para o jogo">
+      <img src="./imagens/pokebola.png" alt="Jogar" class="btn-poke" >
+    </a>
+  </div>
+</main>
+
+<div id="footer"></div>
+
+<script src="script.js"></script>
+<script>
+  async function includeFragment(id, file) {
+    const resp = await fetch(file);
+    document.getElementById(id).innerHTML = await resp.text();
+  }
+  includeFragment("header", "header.html");
+  includeFragment("footer", "footer.html");
+</script>
+</body>
+</html>

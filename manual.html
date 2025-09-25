@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Manual | Batalha Pokémon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="bg-batalha">
+<div id="header"></div>
+
+<main class="container doc">
+  <h1>Como jogar</h1>
+  <ol>
+    <li>Escolha seu Pokémon (inicial na primeira vez) por busca ou lista.</li>
+    <li>Use os filtros de <strong>Tipo</strong> para refinar a escolha.</li>
+    <li>No card central, veja: foto 3x4, nome, tipo (com cor), HP/ATK, forças e fraquezas, evoluções e 3 golpes.</li>
+    <li>O adversário é escolhido automaticamente com <em>HP/ATK equivalentes</em> para ser justo.</li>
+    <li>Clique em <strong>🎲</strong> para rolar um dado virtual (1–6) que escala o dano do golpe.</li>
+    <li>Opções: <strong>⚔️ Lutar</strong>, <strong>🏳️ Desistir</strong>, <strong>🔄 Trocar adversário</strong> (apenas antes da luta).</li>
+    <li>Vitórias habilitam <strong>🧬 Evoluir</strong>:
+      <ul>
+        <li>1ª evolução: após <strong>5</strong> vitórias</li>
+        <li>2ª evolução: após <strong>8</strong> vitórias (reinicia a contagem)</li>
+        <li>3ª evolução (se existir): após <strong>12</strong> lutas</li>
+      </ul>
+    </li>
+    <li>Em Pokémons com ramos (ex.: Eevee), escolha o tipo na evolução.</li>
+    <li>Estatísticas e histórico ficam no painel direito.</li>
+  </ol>
+
+  <h2>Cores por tipo</h2>
+  <p>O card usa a cor do(s) tipo(s). Tabela implementada (tradução → cor):</p>
+  <pre class="pre">
+Bug=Inseto(verde claro) | Dark=Sombrio(preto) | Dragon=Dragão(azul) | Electric=Elétrico(amarelo)
+Fairy=Fada(rosa) | Fighting=Lutador(vermelho escuro) | Fire=Fogo(vermelho) | Flying=Voador(azul claro)
+Ghost=Fantasma(cinza escuro) | Grass=Planta(verde) | Ground=Terrestre(marrom) | Ice=Gelo(azul esverdeado)
+Normal=Normal(cinza) | Poison=Venenoso(roxo) | Psychic=Psíquico(laranja) | Rock=Pedra(marrom 2)
+Steel=Aço(cinza metálico) | Water=Água(azul)
+  </pre>
+
+  <h2>Equilíbrio de lutas</h2>
+  <p>O adversário é buscado por <em>tier</em> aproximada (HP e ATK próximos). Golpes têm forças semelhantes, mas o dano final varia pelo dado e por <strong>efetividade de tipo</strong> (PokeAPI <em>damage_relations</em>).</p>
+</main>
+
+<div id="footer"></div>
+
+<script src="script.js"></script>
+<script>
+  // Carregar header e footer em todas as páginas
+  async function includeFragment(id, file) {
+    const resp = await fetch(file);
+    document.getElementById(id).innerHTML = await resp.text();
+  }
+  includeFragment("header", "header.html");
+  includeFragment("footer", "footer.html");
+</script>
+</body>
+</html>

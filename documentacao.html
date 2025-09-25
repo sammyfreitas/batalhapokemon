@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Documentação | Batalha Pokémon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="bg-batalha">
+<div id="header"></div>
+
+<main class="container doc">
+  <h1>Explorar dados da PokeAPI</h1>
+  <div class="doc-form">
+    <input id="docNome" class="input" placeholder="Digite um nome, ex.: bulbasaur" />
+    <button class="btn" id="btnDocBuscar">Buscar</button>
+  </div>
+
+  <div class="doc-grids">
+    <section>
+      <h3>/pokemon</h3>
+      <pre id="prePokemon" class="pre">—</pre>
+    </section>
+    <section>
+      <h3>/pokemon-species</h3>
+      <pre id="preSpecies" class="pre">—</pre>
+    </section>
+    <section>
+      <h3>/evolution-chain</h3>
+      <pre id="preEvo" class="pre">—</pre>
+    </section>
+  </div>
+</main>
+
+<div id="footer"></div>
+
+<script src="script.js"></script>
+<script>
+  // Carregar header e footer em todas as páginas
+  async function includeFragment(id, file) {
+    const resp = await fetch(file);
+    document.getElementById(id).innerHTML = await resp.text();
+  }
+  includeFragment("header", "header.html");
+  includeFragment("footer", "footer.html");
+</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jogar | Batalha Pokémon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="bg-batalha">
+<div id="header"></div>
+
+<main class="container layout-3col">
+  <!-- Esquerda: seleção -->
+  <aside class="painel painel-esq">
+    <h3>Escolha seu Pokémon</h3>
+
+    <label class="label">Buscar por nome</label>
+    <input id="buscaNome" class="input" type="text" placeholder="Ex.: pikachu" />
+    <button class="btn" id="btnBuscarPorNome">Adicionar</button>
+
+    <label class="label mt">Filtrar por tipo</label>
+    <select id="selectTipo" class="input"></select>
+    
+    <label class="label mt">Ou escolher da lista (somente iniciais)</label>
+    <select id="listaIniciais" size="10" class="listbox"></select>
+    <button class="btn" id="btnEscolherInicial">Escolher</button>
+    
+  </aside>
+
+  <!-- Centro: cards e ações -->
+  <section class="arena">
+    <div class="duplo-card">
+      <article id="cardJogador" class="poke-card vazio">
+        <div class="foto-selo">3x4</div>
+        <div class="poke-conteudo">
+          <h3 class="poke-nome">Seu Pokémon</h3>
+          <div class="tag-tipo">—</div>
+          <div class="linhas">
+            <div><strong>HP</strong> <span class="hp">—</span></div>
+            <div><strong>ATK</strong> <span class="atk">—</span></div>
+          </div>
+          <div class="forcafraca">—</div>
+          <div class="evolucoes">—</div>
+          <div class="golpes">
+            <h4>Golpes</h4>
+            <div class="golpes-lista"></div>
+          </div>
+        </div>
+      </article>
+
+      <article id="cardAdversario" class="poke-card vazio">
+        <div class="foto-selo">3x4</div>
+        <div class="poke-conteudo">
+          <h3 class="poke-nome">Adversário</h3>
+          <div class="tag-tipo">—</div>
+          <div class="linhas">
+            <div><strong>HP</strong> <span class="hp">—</span></div>
+            <div><strong>ATK</strong> <span class="atk">—</span></div>
+          </div>
+          <div class="forcafraca">—</div>
+          <div class="evolucoes">—</div>
+          <div class="golpes">
+            <h4>Golpes</h4>
+            <div class="golpes-lista"></div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="acoes">
+      <button class="btn" id="btnNovoAdversario" title="Trocar adversário (antes de lutar)">🔄 Trocar adversário</button>
+      <button class="btn primario" id="btnLutar">⚔️ Lutar</button>
+      <button class="btn perigo" id="btnDesistir">🏳️ Desistir</button>
+      <button class="btn dado" id="btnDado" title="Rolar o dado">🎲</button>
+      <button class="btn sucesso" id="btnEvoluir" disabled>🧬 Evoluir</button>
+    </div>
+
+    <div id="painelResultado" class="painel-resultado"></div>
+  </section>
+
+  <!-- Direita: estatísticas -->
+  <aside class="painel painel-dir">
+    <h3>Estatísticas do Jogador</h3>
+    <ul class="stats">
+      <li>Lutas: <strong id="stLutas">0</strong></li>
+      <li>Vitórias: <strong id="stVitorias">0</strong></li>
+      <li>Derrotas: <strong id="stDerrotas">0</strong></li>
+      <li>% Vitórias: <strong id="stTaxa">0%</strong></li>
+      <li>Para evoluir: <strong id="stProxEvolucao">5 vitórias</strong></li>
+    </ul>
+    <h4>Histórico</h4>
+    <ol id="logBatalhas" class="log"></ol>
+  </aside>
+</main>
+
+<div id="footer"></div>
+
+<script src="script.js"></script>
+<script>
+  // Carregar header e footer em todas as páginas
+  async function includeFragment(id, file) {
+    const resp = await fetch(file);
+    document.getElementById(id).innerHTML = await resp.text();
+  }
+  includeFragment("header", "header.html");
+  includeFragment("footer", "footer.html");
+</script>
+</body>
+</html>
