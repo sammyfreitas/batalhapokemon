@@ -122,6 +122,21 @@ body {
 .poke-card[class*="type-"] { border-color: var(--t, #e5e7eb); }
 .poke-card .tag-tipo { background: color-mix(in srgb, var(--t, #e5e7eb) 45%, #ffffff 55%); }
 
+
+.detalhe-card {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.2);
+  text-align: center;
+}
+.detalhe-card img {
+  max-width: 200px;
+  display: block;
+  margin: 1rem auto;
+}
+
 /* RESPONSIVO */
 @media (max-width: 960px){
   .layout-3col { grid-template-columns: 1fr; }
